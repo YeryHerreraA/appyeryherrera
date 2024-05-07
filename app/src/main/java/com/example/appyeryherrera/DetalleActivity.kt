@@ -2,35 +2,34 @@ package com.example.appyeryherrera
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class DetalleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_detalle)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val fab_edit = findViewById<FloatingActionButton>(R.id.fab_edit)
+        val fab_delete = findViewById<FloatingActionButton>(R.id.fab_delete)
 
-        //referencias a los widget
-        val btn_iniciar_sesion_login = findViewById<Button>(R.id.btn_iniciar_sesion_login)
-        val btn_registrarse_login = findViewById<Button>(R.id.btn_registrarse_login)
 
-        btn_iniciar_sesion_login.setOnClickListener{
-            val intent = Intent(this@MainActivity,UserActivity::class.java)
-            startActivity(intent)
-        }
-        btn_registrarse_login.setOnClickListener{
-            val intent = Intent(this@MainActivity,RegistrarUsuarioActivity::class.java)
+        fab_edit.setOnClickListener{
+            val intent = Intent(this@DetalleActivity,UserActivity::class.java)
             startActivity(intent)
         }
 
+        fab_delete.setOnClickListener{
+            val intent = Intent(this@DetalleActivity,UserActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

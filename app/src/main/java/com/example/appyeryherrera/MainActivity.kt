@@ -3,6 +3,7 @@ package com.example.appyeryherrera
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,5 +33,41 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
     }
+    override fun onDestroy() {
+        Toast.makeText(this, "onDestroy", Toast.LENGTH_SHORT).show()
+        println("onDestroy()")
+        super.onDestroy()
+
+    }
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this, "onStart", Toast.LENGTH_SHORT).show()
+        println("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show()
+        println("onResume")
+    }
+    override fun onRestart() {
+        super.onRestart()
+        Toast.makeText(this, "onRestart", Toast.LENGTH_SHORT).show()
+        println("onRestart")
+    }
+    override fun onPause() {
+        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show()
+        super.onPause()
+        println("onPause()")
+    }
+    override fun onStop() {
+        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show()
+        super.onStop()
+        println("onStop()")
+    }
+
+
 }

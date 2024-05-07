@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_correo_login"
+        android:id="@+id/til_email"
         android:layout_width="303dp"
         android:layout_height="77dp"
         android:layout_marginTop="16dp"
@@ -63,13 +63,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_clave_login"
+        android:id="@+id/til_pass"
         android:layout_width="303dp"
         android:layout_height="77dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/til_correo_login"
+        app:layout_constraintTop_toBottomOf="@+id/til_email"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/til_clave_login" />
+        app:layout_constraintTop_toBottomOf="@+id/til_pass" />
 
     <Button
         android:id="@+id/btn_iniciar_sesion_login"

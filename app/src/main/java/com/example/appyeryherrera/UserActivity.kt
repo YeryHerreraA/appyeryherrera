@@ -4,10 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -34,25 +36,54 @@ class UserActivity : AppCompatActivity() {
         val correo:String = intent.getStringExtra("correo").toString()
         tv_bienvenido_user.setText("Bienvenido $correo")
 
+        //ARRAY ADAPTER SPINNER
+        //GENERACION DEL SPINNER
+        val arrayAdapterSpinner: ArrayAdapter<*>
+        //definicion de un arreglo
+        var tipoepp = ArrayList<String>()
+        tipoepp.add("Todas las opciones")
+        tipoepp.add("Cabeza")
+        tipoepp.add("Cuerpo")
+        tipoepp.add("Pies")
+        //inflamos el spiner
+        arrayAdapterSpinner = ArrayAdapter(this@UserActivity, android.R.layout.simple_spinner_dropdown_item,tipoepp)
+        sp_tipo_epp_user.adapter = arrayAdapterSpinner
 
-        fab_add.setOnClickListener{
-            val intent = Intent(this@UserActivity,RegistrarEppActivity::class.java)
-            startActivity(intent)
-        }
+        //ARRAY ADAPTER LISTVIEW
+        //GENERACION DEL LISTVIEW
+        val arrayAdapterListview: ArrayAdapter<*>
+        //definicion de un arreglo
+        var epp = ArrayList<String>()
+        epp.add("casco minero")
+        epp.add("lentes claros")
+        epp.add("protector auditivo fono")
+        epp.add("lampara minera")
+        //inflar el listview
+        arrayAdapterListview = ArrayAdapter(this@UserActivity, android.R.layout.simple_list_item_1,epp)
+        lv_epp_user.adapter = arrayAdapterListview
 
+        // metodo onlist lisview
         lv_epp_user.onItemClickListener = object : AdapterView.OnItemClickListener{
-            override fun onItemClick(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long)
-             {
-               val intent = Intent(this@UserActivity,DetalleActivity::class.java)
-        startActivity(intent)
+            override fun onItemClick(p0: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                println("${position} ${id} ${epp[position]}")
+                val intent = Intent(this@UserActivity,DetalleActivity::class.java)
+                intent.putExtra("epp",epp[position])
+                startActivity(intent)
             }
-
-
         }
+
+        // Evento boton añadir
+
+
+
+         fab_add.setOnClickListener{
+             startActivity(Intent(this@UserActivity,RegistrarEppActivity::class.java))
+
+         }
+
+
+
+
 
 
     }

@@ -1,5 +1,6 @@
 package com.example.appyeryherrera
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputLayout
+import java.util.Calendar
 
 class RegistrarUsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,5 +48,30 @@ class RegistrarUsuarioActivity : AppCompatActivity() {
             val intent = Intent(this@RegistrarUsuarioActivity, MainActivity::class.java)
             startActivity(intent)
         }
+
+        //OBTENEMOS LA INSTANCIA DEL CALENDARIO ACTUAL DEL SISTEMA
+        val cal = Calendar.getInstance()
+        //LISTENER
+        val listenerFecha = DatePickerDialog.OnDateSetListener { datePicker, anyo, mes, dia ->
+            var mes = mes+1
+            var smes ="${mes}"
+            var sdia ="${dia}"
+            if (mes<10){
+                smes = "0${mes}"
+            }
+            if (dia<10){
+                sdia = "0${dia}"
+            }
+
+            til_fechanac_register.editText?.setText("$sdia/$smes/$anyo")
+        }
+        //GENERAMOS EVENTO QUE AL PRESIONAR EL CAMPO APAREZCA EL PICKER
+        til_fechanac_register.editText?.setOnClickListener {
+            //Mostrar el piker
+            DatePickerDialog(this,listenerFecha,cal.get(Calendar.YEAR),cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+
+
     }
 }

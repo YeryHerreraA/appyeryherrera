@@ -3,14 +3,16 @@
     <string name="til_nombre_de_epp">Nombre de EPP</string>
     <string name="til_descripcion_epp">Descripcion</string>
 
+    <!--Mensajes de validacion -->
+    <string name="mensaje_campo_vacio">Este campo es requerido</string>
+
+
     <!--Valores de entrada de maqueta -->
     <string-array name="sp_tipo">
         <item>Epp cabeza</item>
         <item>Epp cuerpo</item>
         <item>Epp pies</item>
-
     </string-array>
-
 
     <string-array name="sp_epp">
         <item>casco</item>

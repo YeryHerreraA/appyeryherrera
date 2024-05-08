@@ -30,6 +30,7 @@ class RegistrarUsuarioActivity : AppCompatActivity() {
         val til_contrasena_register = findViewById<TextInputLayout>(R.id.til_contrasena_register)
         val til_rcontrasena_register = findViewById<TextInputLayout>(R.id.til_rcontrasena_register)
         val sw_aceptar_terminos_register = findViewById<Switch>(R.id.sw_aceptar_terminos_register)
+        //todo falta validar los datos
 
 
         btn_register_user.setOnClickListener {

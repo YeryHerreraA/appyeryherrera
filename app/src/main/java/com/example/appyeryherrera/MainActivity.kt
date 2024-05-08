@@ -1,5 +1,6 @@
 package com.example.appyeryherrera
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -30,14 +31,30 @@ class MainActivity : AppCompatActivity() {
         val btn_iniciar_sesion_login = findViewById<Button>(R.id.btn_iniciar_sesion_login)
         val btn_registrarse_login = findViewById<Button>(R.id.btn_registrarse_login)
 
+        //shared preferences
+        val preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE)
+        // si recordamos el valor lo vamos a setear
+        til_email.editText?.setText(preferencias.getString("correo",""))
+
+
 
         //obtener valores de los campos de texto
         btn_iniciar_sesion_login.setOnClickListener{
             var correo =  til_email.editText?.text.toString()
             var clave =  til_pass.editText?.text.toString()
             var contador=validarCampos()
+            var isRemember = sw_recordar.isChecked
+            println("El switch esta: $isRemember")
             if (contador == 0){
+                if (isRemember){
+                val editor = preferencias.edit()
+                 editor.putString("correo",correo)
+                 editor.commit()
+                }
                 Toast.makeText( this,"Login exitoso", Toast.LENGTH_LONG).show()
+                val intent = Intent(this@MainActivity,UserActivity::class.java)
+                intent.putExtra("correo",correo)
+                startActivity(intent)
             }
 
         }
@@ -45,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             //var pass=til_pass.editText?.text.toString()
             //Toast.makeText(this, email+""+pass, Toast.LENGTH_SHORT).show()
             //println("{$email} ${pass}")
-            //val intent = Intent(this@MainActivity,UserActivity::class.java)
+            //
             //startActivity(intent)
 
         btn_registrarse_login.setOnClickListener{
